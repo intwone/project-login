@@ -5,7 +5,7 @@
         <meta charset="uft-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" /> 
         <link rel="stylesheet" href="bootstrap.min.css" />
-        <link rel="stylesheet" href="style.css" /> 
+        <link rel="stylesheet" href="style-login.css" /> 
         <script type="text/javascript" src="jquery.min.js"></script>
         <script type="text/javascript" src="bootstrap.min.js"></script>
     </head>
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="signup-account">
-                        <a href="">SIGN UP NOW</a>
+                        <a href="create-account.php">SIGN UP NOW</a>
                     </div>
                 </div>
             </div>
