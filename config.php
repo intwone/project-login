@@ -1,6 +1,6 @@
 <?php
 
-$dsn = "mysql:dbname=lesson19;host=localhost";
+$dsn = "mysql:dbname=cadaster_users;host=localhost";
 $dbuser = "root";
 $dbpassword = "";
 
@@ -9,6 +9,5 @@ try {
 } catch(PDOexception $exception) {
     echo "ERROR: ".$exception->getMessage();
 }
-
 
 ?>

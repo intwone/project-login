@@ -18,14 +18,14 @@ body {
     padding: 40px;
 }
 .sector-right {
-    height: 600px; 
+    height: 650px; 
     width: 200px;
     background-color: #28a643;
     border-top-left-radius: 25px; 
     border-bottom-left-radius: 25px; 
 }
 .sector-left {
-    height: 600px; 
+    height: 650px; 
     width: 420px;
     border: 1px solid #28a643;
     border-top-right-radius: 25px; 
@@ -58,7 +58,6 @@ body {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
-
 }
 label {
     font-weight: bold;
@@ -87,4 +86,7 @@ label {
     width: 100px;
     border-radius: 25px;
     align-items: right;
+}
+#input:focus {
+    outline: none;
 }

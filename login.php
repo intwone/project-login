@@ -13,7 +13,7 @@
         <div class="limiter">
             <div class="login-all">
                 <div class="login-head">
-                    <h5 class="login-page">LOGIN PAGE</h5>
+                    <h5 class="login-page"><strong>LOGIN PAGE</strong></h5>
                 </div>
 
                 <div class="login-body">
