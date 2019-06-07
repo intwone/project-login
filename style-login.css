@@ -43,7 +43,7 @@ input {
     outline: none;
     background: #ebebeb;
     color: #28a643;
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-weight: bold;
     font-size: 12px;
     -webkit-border-radius: 25px;

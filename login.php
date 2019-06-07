@@ -1,3 +1,28 @@
+<?php
+session_start();
+require 'config.php';
+
+if(isset($_POST['user']) && !empty($_POST['user'])) {
+    $email = addslashes($_POST['user']);
+    $password = MD5(addslashes($_POST['password']));
+
+    $sql = "SELECT * FROM db_users WHERE dbu_email = :email AND dbu_password = :pass";
+    $sql = $pdo->prepare($sql);
+    $sql->bindValue(':email', $email);
+    $sql->bindValue(':pass', $password);
+    $sql->execute();    
+
+    if($sql->rowCount() > 0) {
+        $data_user = $sql->fetch();
+        $_SESSION['id'] = $data_user['dbu_id'];
+
+        header("Location: index.php");
+    } else {
+        // incorrect user 
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,11 +45,11 @@
                     <div class="form-body">
                         <form method="POST">
                             <div class="form-input">
-                                <input type="text" class="placeholder-area" id="placeholder-area" placeholder="user">
+                                <input type="text" name="user" class="placeholder-area" id="placeholder-area" placeholder="email">
                             </div>
 
                             <div class="form-input">
-                                <input type="password" class="placeholder-area" id="placeholder-area" placeholder="password">
+                                <input type="password" name="password" class="placeholder-area" id="placeholder-area" placeholder="password">
                             </div>
 
                             <div class="form-input">

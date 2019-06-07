@@ -1,34 +1,5 @@
 <?php
 require 'config.php';
-
-if(isset($_POST['name']) && !empty($_POST['name'])) {
-    $name = addslashes($_POST['name']);
-    $email = addslashes($_POST['email']);
-    $password1 = MD5(addslashes($_POST['password1']));
-    $password2 = MD5(addslashes($_POST['password2']));
-    $date = date("d/m/Y H:i");
-    
-
-    if($password1 == $password2) {
-        $sql = "INSERT INTO db_users (dbu_name, dbu_email, dbu_password, dbu_date) 
-                VALUES (:addname, :addemail, :addpassword, :adddate)";
-        $sql = $pdo->prepare($sql);
-        $sql->bindValue(':addname', $name);
-        $sql->bindValue(':addemail', $email);
-        $sql->bindValue(':addpassword', $password1);
-        $sql->bindValue(':adddate', $date);
-        $sql->execute();
-
-        echo '<div class="alert alert-success" role="alert">';
-        echo 'Register successfully!';
-        echo '</div>';
-    } else {
-        echo '<div class="alert alert-danger" role="alert">';
-        echo 'Wrong password';
-        echo '</div>';
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -55,17 +26,34 @@ if(isset($_POST['name']) && !empty($_POST['name'])) {
                                 </div>
                                 
                                 <?php
-                                /*
-                                if(MD5(addslashes($_POST['password1'])) == MD5(addslashes($_POST['password2']))) {
-                                    echo '<div class="alert alert-sucess" role="alert">';
-                                    echo 'Register successfully!';
-                                    echo '</div>';
-                                } else {
-                                    echo '<div class="alert alert-danger" role="alert">';
-                                    echo 'Wrong password!';
-                                    echo '</div>';
+                                
+                                if(isset($_POST['name']) && !empty($_POST['name'])) {
+                                    $name = addslashes($_POST['name']);
+                                    $email = addslashes($_POST['email']);
+                                    $password1 = MD5(addslashes($_POST['password1']));
+                                    $password2 = MD5(addslashes($_POST['password2']));
+                                    $date = date("d/m/Y H:i");
+                                
+                                    if($password1 == $password2 && !empty($name) && !empty($email)) {
+                                        $sql = "INSERT INTO db_users (dbu_name, dbu_email, dbu_password, dbu_date) 
+                                                VALUES (:addname, :addemail, :addpassword, :adddate)";
+                                        $sql = $pdo->prepare($sql);
+                                        $sql->bindValue(':addname', $name);
+                                        $sql->bindValue(':addemail', $email);
+                                        $sql->bindValue(':addpassword', $password1);
+                                        $sql->bindValue(':adddate', $date);
+                                        $sql->execute();
+                                
+                                        echo '<div class="alert alert-success" role="alert">';
+                                        echo 'Register successfully!';
+                                        echo '</div>';
+                                    } else {
+                                        echo '<div class="alert alert-danger" role="alert">';
+                                        echo 'Passwords are divergent!';
+                                        echo '</div>'; 
+                                    }
                                 }
-                                */
+
                                 ?>
 
                                 <div class="form-content form-group">
@@ -81,7 +69,7 @@ if(isset($_POST['name']) && !empty($_POST['name'])) {
                                 </div>
 
                                 <div class="form-content form-group">
-                                    <input type="password" name="password2" class="form-control inputtest" id="input" placeholder="Confirm Password"/>
+                                    <input type="password" name="password2" class="form-control inputtest" maxlength="8" id="input" placeholder="Confirm Password"/>
                                 </div>
 
                                 <div class="form-content-agree">

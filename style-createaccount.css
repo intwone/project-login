@@ -48,7 +48,7 @@ body {
     border-radius: 25px;
     padding-left: 35px;
 }
-.form-body input {
+.form-content input {
     background: #ebebeb;
     outline: none;
     border: none;
@@ -89,4 +89,10 @@ label {
 }
 #input:focus {
     outline: none;
+}
+.alert {
+    height: 50px;
+    width: 70%;
+    border-radius: 25px;
+    text-align: center;
 }
