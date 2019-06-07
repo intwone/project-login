@@ -18,15 +18,15 @@ body {
     padding: 40px;
 }
 .sector-right {
-    height: 650px; 
+    height: 750px; 
     width: 200px;
     background-color: #28a643;
     border-top-left-radius: 25px; 
     border-bottom-left-radius: 25px; 
 }
 .sector-left {
-    height: 650px; 
-    width: 420px;
+    height: 750px; 
+    width: 520px;
     border: 1px solid #28a643;
     border-top-right-radius: 25px; 
     border-bottom-right-radius: 25px; 
@@ -92,7 +92,21 @@ label {
 }
 .alert {
     height: 50px;
-    width: 70%;
+    width: 100%;
     border-radius: 25px;
     text-align: center;
+}
+.send-file {
+    height: 70px;
+    justify-content: space-between;
+}
+.b2 {
+    height: 36.5px;
+}
+.choose-text {
+    color: #999999;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 3px;
+
 }

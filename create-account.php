@@ -13,13 +13,13 @@ require 'config.php';
         <script type="text/javascript" src="jquery.min.js"></script>
         <script type="text/javascript" src="bootstrap.min.js"></script>
     </head>
-    <body>
+    <body> 
         <div class="limiter">
             <div class="container">
                 <section class="flex">
                     <div class="sector-right"></div>
                     <div class="sector-left">
-                        <form method="POST" class="forms">
+                        <form method="POST" class="forms" enctype="multipart/form-data" action="receive.php"; >
                             <div class="form-group form-body">
                                 <div class="title-register">
                                     <h4>Registration Form</h4>
@@ -32,16 +32,15 @@ require 'config.php';
                                     $email = addslashes($_POST['email']);
                                     $password1 = MD5(addslashes($_POST['password1']));
                                     $password2 = MD5(addslashes($_POST['password2']));
-                                    $date = date("d/m/Y H:i");
                                 
                                     if($password1 == $password2 && !empty($name) && !empty($email)) {
                                         $sql = "INSERT INTO db_users (dbu_name, dbu_email, dbu_password, dbu_date) 
-                                                VALUES (:addname, :addemail, :addpassword, :adddate)";
+                                                VALUES (:addname, :addemail, :addpassword, NOW())";
+
                                         $sql = $pdo->prepare($sql);
                                         $sql->bindValue(':addname', $name);
                                         $sql->bindValue(':addemail', $email);
                                         $sql->bindValue(':addpassword', $password1);
-                                        $sql->bindValue(':adddate', $date);
                                         $sql->execute();
                                 
                                         echo '<div class="alert alert-success" role="alert">';
@@ -54,7 +53,20 @@ require 'config.php';
                                     }
                                 }
 
-                                ?>
+                                ?>  
+
+                                <div class="send-file">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-outline-secondary b2" type="submit" id="inputGroupFileAddon03">Upload</button>
+                                        </div>
+
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="file" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                                            <label class="custom-file-label" for="inputGroupFile03"><div class="choose-text">Choose an image for your avatar.</div></label>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="form-content form-group">
                                     <input type="text" name="name" class="form-control inputtest" id="input" placeholder="Full Name"/>
@@ -80,7 +92,6 @@ require 'config.php';
                                     <div class="text-term">
                                         <span>By signing up, you agree to the </br> <a href="">Play terms of Service</a> </span>
                                     </div>
-                                    
                                 </div>
                                 <div class="form-content-button">
                                     <button class="btn btn-success btn-sm b1" type="submit">REGISTER</button>
